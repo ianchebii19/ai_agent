@@ -31,6 +31,7 @@ export interface BaseStreamMessage {
 
 export interface TokenMessage extends BaseStreamMessage {
   type: StreamMessageType.Token; // Fixed enum reference
+  token: string
 }
 
 export interface ErrorMessage extends BaseStreamMessage {
@@ -46,11 +47,16 @@ export interface DoneMessage extends BaseStreamMessage {
 }
 
 export interface ToolStartMessage extends BaseStreamMessage { // Fixed interface name (ToolsStartMessage -> ToolStartMessage)
-  type: StreamMessageType.ToolStart; // Fixed enum reference
+  type: StreamMessageType.ToolStart;
+  tool: string | unknown
+  input: unknown
+   // Fixed enum reference
 }
 
 export interface ToolEndMessage extends BaseStreamMessage {
-  type: StreamMessageType.ToolEnd; // Fixed enum reference
+  type: StreamMessageType.ToolEnd;
+  tool: string | unknown
+  output: unknown // Fixed enum reference
 }
 
 export type StreamMessage =
